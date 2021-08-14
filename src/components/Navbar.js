@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import useCart from '../hooks/useCart';
 
 import BaseContainer from './Container';
 
@@ -93,7 +94,9 @@ CartIcon.propTypes = {
  * Below is the main Navbar component.
  * TODO: Set active prop of CartIcon to true if there are items in the cart.
  */
-export const Navbar = () => (
+export const Navbar = () => {
+  const {cartItems} = useCart()
+return (
   <Wrapper>
     <Container>
       <Link to={'/'}>
@@ -101,10 +104,10 @@ export const Navbar = () => (
       </Link>
       <SearchInput />
       <Link to={'/my-cart'}>
-        <CartIcon active={false} />
+        <CartIcon active={cartItems && cartItems.length > 0}/>
       </Link>
     </Container>
   </Wrapper>
 );
-
+}
 export default Navbar;
