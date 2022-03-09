@@ -29,7 +29,7 @@ const SummaryTableCell = styled.td`
  * Below is the main CardItemList component.
  */
 export const CartItemList = ({ data, updateQuantity, removeCartItem }) => {
-  const totalPrice = data.reduce((prev, cur) => prev + cur.quantity * cur.product.totalPrice, 0)
+  const totalPrice = data.reduce((prev, cur) => prev + cur.quantity * cur.product.price, 0);
   return (
     <Table>
       <thead>
